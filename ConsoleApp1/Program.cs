@@ -12,7 +12,7 @@ internal static class TestClass
 
         MainGame.GameStart(30);
         MainGame.GameStart(28);
-        MainGame.GameStart(23);
+        MainGame.GameStart(24);
         MainGame.GameStart(30);
         MainGame.GameStart(26);
         Console.WriteLine("----------------------------------------Your Career---------------------------------------");
