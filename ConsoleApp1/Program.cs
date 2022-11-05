@@ -6,19 +6,20 @@ internal static class TestClass
     {
         Console.WriteLine("Game Started!");
         
-        GameAccount MyAccount = new GameAccount("Vadim", 500);
-        GameAccount OpponentAccount = new GameAccount("Bot", 540);
-        Game MainGame = new Game(MyAccount, OpponentAccount);
+        GameAccount myAccount = new GameAccount("Vadim", 200);
+        GameAccount opponentAccount = new GameAccount("Bot", 240);
+        Game mainGame = new Game(myAccount, opponentAccount);
 
-        MainGame.GameStart(30);
-        MainGame.GameStart(28);
-        MainGame.GameStart(24);
-        MainGame.GameStart(30);
-        MainGame.GameStart(26);
-        Console.WriteLine("----------------------------------------Your Career---------------------------------------");
-        MyAccount.GetStats();
-        Console.WriteLine("-------------------------------------Opponent's Career-------------------------------------");
-        OpponentAccount.GetStats();
+        mainGame.GameStart(52);
+        mainGame.GameStart(58);
+        mainGame.GameStart(54);
+        mainGame.GameStart(50);
+        mainGame.GameStart(56);
         
+        Console.WriteLine("----------------------------------------Your Career---------------------------------------");
+        myAccount.GetStats();
+        
+        Console.WriteLine("-------------------------------------Opponent's Career-------------------------------------");
+        opponentAccount.GetStats();
     }
 }

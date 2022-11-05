@@ -2,40 +2,48 @@ namespace ConsoleApp1;
 
 public class GameAccount
 {
-    public string username;
-    public int currentRating;
-    public int gamesCount;
-    public List<GameResults> history = new ();
-    public GameResults gameResults = new GameResults();
-    
+    public readonly string username;
+    private int _currentRating;
+    private int _gamesCount;
+    private readonly List<GameResults> _history = new ();
+
     public GameAccount(string username, int currentRating)
     {
         this.username = username;
-        this.currentRating = currentRating;
-        gamesCount = 0;
+        _currentRating = currentRating;
+        _gamesCount = 0;
     }
 
-    public void WinGame(string opponentName, int rating, int ID)
+    public int CurrentRating
     {
-        currentRating += rating;
-        gamesCount++;
-        history.Add(new GameResults(username, opponentName, rating, currentRating, gamesCount, ID, '+'));
+        get => _currentRating;
+        set
+        {
+            if (value < 1) _currentRating = 1;
+            else _currentRating = value;
+        }
+    }
+
+    public void WinGame(string opponentName, int rating, int id)
+    {
+        CurrentRating += rating;
+        _gamesCount++;
+        _history.Add(new GameResults(username, opponentName, rating, _currentRating, _gamesCount, id, '+'));
     }
     
-    public void LoseGame(string opponentName, int rating, int ID)
+    public void LoseGame(string opponentName, int rating, int id)
     {
-        if (currentRating >= rating) currentRating -= rating;
-        else currentRating = 1;
-        gamesCount++;
-        history.Add(new GameResults(username, opponentName, rating, currentRating, gamesCount, ID, '-'));
+        CurrentRating -= rating;
+        _gamesCount++;
+        _history.Add(new GameResults(username, opponentName, rating, _currentRating, _gamesCount, id, '-'));
     }
 
     public void GetStats()
     {
-        foreach (var gameData in history)
+        foreach (var gameData in _history)
         {
-            Console.WriteLine("Game №" + gameData.ID + ". "
-                              + gameData.username + " vs " + gameData.opponentname
+            Console.WriteLine("Game №" + gameData.id + ". "
+                              + gameData.username + " vs " + gameData.opponentName
                               + " - Result of the game: (" + gameData.symbol + gameData.ratingPerGame + ")"
                               + ". Your rating: " + gameData.currentRating 
                               + ". Games you played: " +  gameData.gamesCount);

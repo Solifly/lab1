@@ -7,26 +7,23 @@ public class GameResults
         Win,
         Lose
     }
-
-    public States GameResult;
-    public String username;
-    public String opponentname;
-    public int ratingPerGame;
-    public int currentRating;
-    public int gamesCount;
-    public int ID;
-    public char symbol;
     
-    public GameResults(){}
+    public readonly string username;
+    public readonly string opponentName;
+    public readonly int ratingPerGame;
+    public readonly int currentRating;
+    public readonly int gamesCount;
+    public readonly int id;
+    public readonly char symbol;
 
-    public GameResults(string username, string opponentname, int ratingPerGame, int currentRating, int gamesCount, int ID, char symbol)
+    public GameResults(string username, string opponentName, int ratingPerGame, int currentRating, int gamesCount, int id, char symbol)
     {
         this.username = username;
-        this.opponentname = opponentname;
+        this.opponentName = opponentName;
         this.ratingPerGame = ratingPerGame;
         this.currentRating = currentRating;
         this.gamesCount = gamesCount;
-        this.ID = ID;
+        this.id = id;
         this.symbol = symbol;
     }
 }
